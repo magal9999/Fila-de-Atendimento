@@ -1,0 +1,49 @@
+package app;
+
+public class Pessoa {
+	private String nome;
+	private String cpf;
+	private byte Interesse;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public byte getInteresse() {
+		return Interesse;
+	}
+
+	public void setInteresse(byte interesse) {
+		this.Interesse = interesse;
+	}
+
+	@Override
+	public String toString() {
+
+		String texto;
+		switch (this.Interesse) {
+		case 1:
+			texto = "Pagamento de conta";
+			break;
+		case 2:
+			texto = " Recebim,ento de salário";
+			break;
+		default:
+			texto = "Outro";
+		}
+		return "\nNome=" + this.nome + " cpf: " + this.cpf + ", Interesse: " + texto + '}';
+	}
+
+}
