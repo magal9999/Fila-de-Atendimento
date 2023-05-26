@@ -1,0 +1,75 @@
+package app;
+
+import java.util.Scanner;
+
+public class Main extends Pessoa {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		FilaDeAtendimento f1 = new FilaDeAtendimento();
+		Cpf c1 = new Cpf();
+		Interesse i1 = new Interesse();
+		int op;
+
+		do {
+			System.out.println("DIGITE");
+			System.out.println("1 - Adicionar um cliente na fila");
+			System.out.println("2 - Ver cliente da fila");
+			System.out.println("3 - Ver Quanidade de clientes que estão na fila");
+			System.out.println("4 - Atender um cliente");
+			System.out.println("5 - Pesquisar um cliente pelo CPF");
+			System.out.println("6 - Pesquisar um cliente pelo intersse");
+			System.out.println("7 - Retirar todos os clientes da fila");
+			System.out.println("0 - Para sair");
+			op = sc.nextInt();
+
+			switch (op) {
+			case 1:
+				Pessoa p1 = new Pessoa();
+				System.out.println("Digite o nome do cliente");
+				sc.nextLine();
+				p1.setNome(sc.nextLine());
+				break;
+			case 2:
+				if (f1.getFila().isEmpty()) {
+					System.out.println("Não há Cliente ");
+				} else {
+					System.out.println("Clientes na fila" + f1);
+				}
+				break;
+			case 3:
+				System.out.println("Total de clientes " + f1.obterQuantidadeDePessoas());
+				break;
+			case 4:
+				System.out.println("Próximo Cliente " + f1.atenderPessoa());
+				break;
+			case 5:
+				System.out.println("Digite o cpf " + f1.pesquisarPeloCpf(null));
+				break;
+			case 6:
+				break;
+			case 7:
+				if (f1.getFila().isEmpty()) {
+					System.out.println("Não a clientes para excluir!");
+				} else {
+					int confirma;
+					System.out.println("Tem certeza que deseja EXCLUIR TUDO?\n1-SIM\n2-NÃO");
+					confirma = sc.nextInt();
+					if (confirma == 1) {
+						f1.apagarTodos();
+						System.out.println("Clientes excluidos com sucesso!");
+					} else {
+						System.out.println("Opção Cancelada");
+					}
+
+				}
+				break;
+			case 0:
+				System.out.println("Sistema encerrado!");
+			default:
+				System.out.println("Opção Inválida");
+			}
+
+		} while (op != 0);
+	}
+}
